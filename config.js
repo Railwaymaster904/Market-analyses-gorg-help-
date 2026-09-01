@@ -1,14 +1,13 @@
+
 const CONFIG = {
   APP_NAME: "Nexus AI",
-  // Backend proxy URL — Railway / Render / localhost
-  // Example: "https://your-app.up.railway.app/api/analyze"
-  API_ENDPOINT: "/api/analyze",
+  // Backend proxy URL — Railway
+  API_ENDPOINT: "https://market-analyses-gorg-help-production.up.railway.app/api/analyze",
 
-  // true = offline demo signals (no API). false = real backend
-  DEMO_MODE: true,
+  // false = real AI (ChatGPT + Grok + Gemini)
+  DEMO_MODE: false,
 
   MAX_IMAGE_MB: 10,
-
   MARKETS: [
     // Forex
     { id: "EURUSD", name: "EUR/USD", type: "forex" },
