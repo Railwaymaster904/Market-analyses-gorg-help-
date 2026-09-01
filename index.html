@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus AI · Market Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">◈</span>
+      <div>
+        <strong>NEXUS AI</strong>
+        <small>Market Intelligence</small>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#analyze">Analyze</a>
+      <a href="#markets">Markets</a>
+      <a href="#future">Future Signals</a>
+    </nav>
+    <div class="status-pill">
+      <span class="dot"></span> LIVE ENGINE
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-badge">AI Vision · Multi-Model · OTC + Real</div>
+      <h1>
+        Instant Chart<br />
+        <span class="gradient-text">Signal Intelligence</span>
+      </h1>
+      <p class="hero-sub">
+        Upload any candle chart. Nexus scans price action, structure & momentum —
+        then delivers directional bias with realistic confidence.
+      </p>
+      <div class="hero-cta">
+        <a href="#analyze" class="btn btn-primary">Start Analysis</a>
+        <a href="#future" class="btn btn-ghost">View Future Signals</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>50+</b><span>Markets</span></div>
+        <div><b>OTC</b><span>+ Real Mode</span></div>
+        <div><b>3 AI</b><span>Vision Models</span></div>
+      </div>
+    </section>
+
+    <!-- ANALYZE -->
+    <section id="analyze" class="panel analyze-panel">
+      <div class="panel-head">
+        <h2>◈ Live Chart Analysis</h2>
+        <p>Select market type · pick pair · upload screenshot</p>
+      </div>
+
+      <div class="mode-switch">
+        <button class="mode-btn active" data-mode="otc">OTC Market</button>
+        <button class="mode-btn" data-mode="real">Real Market</button>
+      </div>
+
+      <div class="analyze-grid">
+        <div class="upload-card" id="dropZone">
+          <input type="file" id="chartInput" accept="image/*" hidden />
+          <div class="upload-visual">
+            <div class="ring"></div>
+            <span class="upload-icon">⬆</span>
+          </div>
+          <h3>Drop chart or click to upload</h3>
+          <p>PNG · JPG · WEBP · max 10MB</p>
+          <img id="preview" class="preview hidden" alt="Chart preview" />
+        </div>
+
+        <div class="controls-card">
+          <label>Market Pair</label>
+          <select id="marketSelect"></select>
+
+          <label>Timeframe (hint)</label>
+          <select id="tfSelect">
+            <option value="1m">1 Minute</option>
+            <option value="5m" selected>5 Minutes</option>
+            <option value="15m">15 Minutes</option>
+            <option value="1h">1 Hour</option>
+            <option value="4h">4 Hours</option>
+          </select>
+
+          <button id="analyzeBtn" class="btn btn-primary btn-full" disabled>
+            <span class="btn-text">Analyze Chart</span>
+            <span class="btn-loader hidden"></span>
+          </button>
+
+          <div class="disclaimer">
+            Educational tool only. Not financial advice. Markets involve risk.
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div id="resultBox" class="result-box hidden">
+        <div class="result-header">
+          <span id="resultPair">EUR/USD</span>
+          <span id="resultMode" class="tag">OTC</span>
+        </div>
+        <div class="result-main">
+          <div id="directionBadge" class="direction up">UP</div>
+          <div class="confidence-wrap">
+            <div class="conf-ring" id="confRing">
+              <svg viewBox="0 0 120 120">
+                <circle class="bg" cx="60" cy="60" r="52" />
+                <circle class="fg" id="confCircle" cx="60" cy="60" r="52" />
+              </svg>
+              <span id="confText">0%</span>
+            </div>
+            <small>Model Confidence</small>
+          </div>
+        </div>
+        <p id="resultReason" class="reason"></p>
+        <div class="result-meta">
+          <span id="resultTf">5m</span>
+          <span id="resultTime"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARKETS -->
+    <section id="markets" class="panel">
+      <div class="panel-head">
+        <h2>◈ 50+ Markets</h2>
+        <p>Forex · Crypto · OTC-style pairs</p>
+      </div>
+      <div class="market-filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="forex">Forex</button>
+        <button class="filter" data-filter="crypto">Crypto</button>
+        <button class="filter" data-filter="otc">OTC</button>
+      </div>
+      <div class="market-grid" id="marketGrid"></div>
+    </section>
+
+    <!-- FUTURE SIGNALS -->
+    <section id="future" class="panel">
+      <div class="panel-head">
+        <h2>◈ Future Signal Board</h2>
+        <p>Illustrative bias snapshots · refresh anytime</p>
+      </div>
+      <div class="future-toolbar">
+        <button id="refreshFuture" class="btn btn-ghost">↻ Refresh Signals</button>
+        <span class="hint">Demo-style projections for UI only</span>
+      </div>
+      <div class="future-grid" id="futureGrid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Nexus AI · Educational chart analysis · No guaranteed profits</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+    </html>
